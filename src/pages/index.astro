@@ -1,0 +1,73 @@
+---
+import Seo from "../components/Seo.astro";
+import { Image } from "astro:assets";
+import imgimages_dd_logo_webp from "../../public/images/dd_logo.webp";
+import imgimages_dd_leaf_circle_icon_webp from "../../public/images/dd_leaf_circle_icon.webp";
+import imgimages_dd_banner_img_webp from "../../public/images/dd_banner_img.webp";
+import imgimages_dd_leaf_yellow_icon_webp from "../../public/images/dd_leaf_yellow_icon.webp";
+import '../styles/global.css';
+---
+
+<html lang="en">
+	<head>
+		
+        <script>
+        import { showToast } from "../components/toast";
+        (() => {
+          const els = [...document.querySelectorAll('form')];
+          if (!els?.length) return;
+          els.forEach(el => {
+            console.log("Test 1")
+            el.addEventListener('submit', async (e) => {
+              console.log("Test 2")
+              e.preventDefault();
+              const formData = new FormData(e.target);
+              const formObject = Object.fromEntries(formData);
+              formObject.emailUser = "quangnhat249@gmail.com";
+              console.log("formObject",formObject)
+              console.log("Test 3")
+              try {
+                console.log("Test 4")
+                const response = await fetch('https://app.ecobuilder.io/api/send-mail-contact', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(formObject)
+                });
+                console.log("Test 5")
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                console.log("Test 6")
+                const result = await response.json();
+                showToast('Form submitted successfully!');
+                console.log('Form submitted successfully:', result);
+              } catch (error) {
+                console.error('Error submitting form:', error);
+                showToast('Error submitting form', 'error');
+              }
+            });
+          });
+        })();
+      </script>
+        <Seo seo={{ title: "EcoBuilder", description: "Page description", keywords: "", canonical: "", image: '', type: "website", themeColor: "#ffffff"}} />
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/x-icon" href=/favicons/1737539119919_images.ico /> 
+		<!-- <link
+			rel="icon"
+			type="image/svg+xml"
+			href="/favicon.svg"
+		/> -->
+		<meta
+			name="viewport"
+			content="width=device-width"
+		/>
+		<meta
+			name="generator"
+			content={Astro.generator}
+		/>
+		<title>Astro</title>
+	</head>
+	<body> <header class="flex flex-col relative shrink-0 box-border h-auto empty:min-h-[30vh] before:content-[&#x27;Header&#x27;] before:absolute before:top-0 before:left-0 before:inline-block before:py-1 before:px-2 before:bg-black/20 before:text-white before:text-sm before:rounded before:!rounded-tl-none before:!rounded-bl-none mb-[1px] header-section"><div class="header-component bg-[#F6F8F6]" aria-label="Header Desti&#x27;Durable Section"><div class="max-md:max-w-full px-4 py-4"><div class="mx-auto container 2xl:max-w-[1440px]"><div class="flex items-center justify-between w-full" aria-label="Header content container"><div aria-label="Logo Container"><a href="#" width="auto" height="auto" class="flex items-center space-x-2" aria-label="Go to homepage"><div class="relative" aria-label="Logo image container"><Image alt="Gaiact Company Logo" src={imgimages_dd_logo_webp} width="115.5" height="60" class="w-[115.5px] h-[60px] object-cover max-w-full " loading="lazy" aria-label="Desti&#x27;Durable Logo" /></div></a></div><div aria-label="Contact button container"><button width="auto" height="auto" class="rounded-full inline-flex items-center justify-center bg-[#FFB84C] px-12 py-2.5 text-[#252525] hover:bg-[#ffa01c]" aria-label="Button for more info on Hero Desti Durable">Contactez-nous</button></div></div></div></div></div></header><main class="flex flex-col relative shrink-0 box-border h-auto empty:min-h-[30vh] before:content-[&#x27;Main&#x27;] before:absolute before:top-0 before:left-0 before:inline-block before:py-1 before:px-2 before:bg-black/20 before:text-white before:text-sm before:rounded before:!rounded-tl-none before:!rounded-bl-none mb-[1px] main-section"><section class="main-component w-full bg-[#F6F8F6]" aria-label="Hero Desti Durable Section"><div class="max-md:max-w-full px-2 py-16"><div class="mx-auto container 2xl:max-w-[1440px] relative p-4"><div class="container px-4 md:px-6" aria-label="Wrapper for Hero Desti Durable Section"><div class="flex flex-col items-center space-y-8 text-center" aria-label="Content of Hero Desti Durable Section"><h1 width="auto" height="auto" class="flex flex-col items-center text-3xl tracking-tighter md:text-4xl lg:text-5xl font-semibold gap-[10px]" aria-label="Main heading of Hero Desti Durable Section"><span width="auto" height="auto" class="text-[#252525]">Boostez votre expertise et vos ventes de</span><span width="auto" height="auto" class="text-[#FAB549] w-auto" cssResizer="flex justify-center text-[#FAB549]">voyages éco-responsables</span></h1><button width="auto" height="auto" class="rounded-full inline-flex items-center justify-center bg-[#FFB84C] px-12 py-2.5 mx-auto text-[#252525] hover:bg-[#ffa01c]" aria-label="Button for more info on Hero Desti Durable">En savoir plus</button></div></div><div class="relative mt-10" aria-label="Image section for Hero Desti Durable"><div class="absolute lg:-top-[45px] -top-[22.5px] left-[10%] z-10 pointer-events-none"><Image alt="Desti&#x27;Durable Leaf Icon" src={imgimages_dd_leaf_circle_icon_webp} width="400" height="300" class="lg:w-[90px] lg:h-[90px] w-[45px] h-[45px]" aria-label="Desti&#x27;Durable leaf icon" /></div><Image alt="Desti&#x27;Durable Banner" src={imgimages_dd_banner_img_webp} width="1408" height="500" class="rounded-xl w-full lg:h-[500px] lg:w-[1408px]" cssResizer="!block" aria-label="Desti&#x27;Durable banner image" /><div class="lg:absolute lg:bottom-5 lg:mt-0 lg:mx-5 grid grid-cols-1 gap-5 lg:grid-cols-3 mt-10 " aria-label="Features of Hero Desti Durable"><div class="relative flex items-center rounded-3xl border-0 bg-white shadow-lg" aria-label="Feature 1"><div class="flex items-center w-full p-4"><div class="flex-shrink-0 mr-2"><Image alt="Desti&#x27;Durable" src={imgimages_dd_leaf_yellow_icon_webp} width="24" height="14" class="flex-shrink-0 w-6 h-[14px]" allowResize="false" aria-label="Feature 1 icon" /></div><div><h2 width="auto" height="auto" class="font-bold text-[17px] leading-relaxed text-gray-700" cssResizer="!flex-shrink" aria-label="Feature 1 title">Une expérience unique</h2><p width="auto" height="auto" class="font-normal text-[17px] leading-relaxed text-gray-700" cssResizer="!flex-shrink" aria-label="Feature 1 description">Bien plus qu&#x27;un éductour, c&#x27;est une immersion combinant formation et terrain pour accompagner les professionnels du tourisme.</p></div></div></div><div class="relative flex items-center rounded-3xl border-0 bg-white shadow-lg" aria-label="Feature 2"><div class="flex items-center w-full p-4"><div class="flex-shrink-0 mr-2"><Image alt="Desti&#x27;Durable" src={imgimages_dd_leaf_yellow_icon_webp} width="24" height="14" class="flex-shrink-0 w-6 h-[14px]" allowResize="false" aria-label="Feature 2 icon" /></div><div><h2 width="auto" height="auto" class="font-bold text-[17px] leading-relaxed text-gray-700" cssResizer="!flex-shrink" aria-label="Feature 2 title">Des solutions concrètes</h2><p width="auto" height="auto" class="font-normal text-[17px] leading-relaxed text-gray-700" cssResizer="!flex-shrink" aria-label="Feature 2 description">Un programme ambitieux pour intégrer l&#x27;éco-responsabilité dans votre activité et renforcer votre démarche RSE.</p></div></div></div><div class="relative flex items-center rounded-3xl border-0 bg-white shadow-lg" aria-label="Feature 3"><div class="flex items-center w-full p-4"><div class="flex-shrink-0 mr-2"><Image alt="Desti&#x27;Durable" src={imgimages_dd_leaf_yellow_icon_webp} width="24" height="14" class="flex-shrink-0 w-6 h-[14px]" allowResize="false" aria-label="Feature 3 icon" /></div><div><h2 width="auto" height="auto" class="font-bold text-[17px] leading-relaxed text-gray-700" cssResizer="!flex-shrink" aria-label="Feature 3 title">Sourcing éco-responsable</h2><p width="auto" height="auto" class="font-normal text-[17px] leading-relaxed text-gray-700" cssResizer="!flex-shrink" aria-label="Feature 3 description">Rencontrez des prestataires locaux engagés pour répondre aux besoins des voyageurs d&#x27;aujourd&#x27;hui.</p></div></div></div></div></div></div></div></section></main><footer class="flex flex-col relative shrink-0 box-border h-auto empty:min-h-[30vh] before:content-[&#x27;Footer&#x27;] before:absolute before:top-0 before:left-0 before:inline-block before:py-1 before:px-2 before:bg-black/20 before:text-white before:text-sm before:rounded before:!rounded-tl-none before:!rounded-bl-none mb-[1px] footer-section"><section class="bg-white" aria-label="Footer Desti Durable Section"><div aria-label="Footer Wrapper"><div class="p-4"><div class="mx-auto container 2xl:max-w-[1440px]"><div class="flex flex-col items-center justify-around gap-6 md:flex-row" aria-label="Footer Content"><div class="flex items-center gap-2" aria-label="Footer Logo"><Image alt="Desti&#x27;Durable Logo" src={imgimages_dd_logo_webp} width="196" height="100" class="w-auto h-auto" aria-label="Desti&#x27;Durable Logo Image" /></div><form class="flex w-auto lg:w-full max-w-xl gap-4" aria-label="Footer Email Form"><input type="email" placeholder="Adresse e-mail" class="flex-1 rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Email Input Field"/><button width="auto" height="auto" type="submit" class="inline-flex items-center justify-center rounded-full bg-[#FFB84C] px-12 h-[44px] text-[#252525] transition-all hover:bg-[#ffa01c]" aria-label="Submit Button">Envoyer</button></form></div></div></div><p class="border-t border-[#bbb]"></p><div class="mx-auto container 2xl:max-w-[1440px] flex flex-row justify-center"><p width="auto" height="auto" class="text-center text-sm text-[#252525] p-5" aria-label="Footer Copyright Text" cssResizer="!flex-shrink">© <!-- -->2025<!-- --> DESTI&#x27;DURABLE - Site web créé par la société GreenWeb. L&#x27;ensemble des données est stocké en France par Digital Forest, hébergeur éco-responsable.</p></div></div></section></footer> </body>
+</html>
